@@ -49,6 +49,18 @@ function search(event) {
       currentTemperature.innerHTML = Math.round(
         response.data.temperature.current
       );
+
+      let currentIcon = document.querySelector("#icon");
+      currentIcon.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon"/>`;
+
+      let currentForecast = document.querySelector("#current-forecast");
+      currentForecast.innerHTML = response.data.condition.description;
+
+      let humidity = document.querySelector("#humidity-percentage");
+      humidity.innerHTML = `${response.data.temperature.humidity}%`;
+
+      let wind = document.querySelector("#wind-speed");
+      wind.innerHTML = `${response.data.wind.speed}km/h`;
     })
     .catch(function (error) {
       console.error("Error fetching weather data:", error);
